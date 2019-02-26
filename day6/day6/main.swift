@@ -10,12 +10,11 @@ import Foundation
 // 将一个中缀(infix)表达式 转换成 后缀(postfix)表达式
 //let infixStr = "a+b*c+(d*e+f)*g"; // => abc*+de*f+g*+
 //
-//let astack = Stack();
+//let operationStack = Stack();
 
-func getInfixString(_ infixStr:String) -> String {
-// => abc*+de*f+g*+
+func infixStringToPostfixString(_ infixStr:String) -> String {
     let mutableStr = NSMutableString(string: infixStr);
-    let astack = Stack();
+    let operationStack = Stack();
     let res = NSMutableAttributedString();
 
     for i in 0...(mutableStr.length - 1) {
@@ -24,14 +23,14 @@ func getInfixString(_ infixStr:String) -> String {
         if !isOperator(c){
             res.append(NSAttributedString(string: s));
         }else{
-            if astack.isEmpty(){
-                astack.push(any: c);
+            if operationStack.isEmpty(){
+                operationStack.push(any: c);
             }else{
-                if isCloseC(c){
-                    while astack.isEmpty() == false{
-                        let topOP = astack.topElement() as! unichar;
-                        let popC = astack.pop() as! unichar;
-                        if !isOpenC(topOP){
+                if isCloseSymbol(c){
+                    while operationStack.isEmpty() == false{
+                        let loopTopOP = operationStack.topElement() as! unichar;
+                        let popC = operationStack.pop() as! unichar;
+                        if !isOpenSymbol(loopTopOP){
                             let op = String(format: "%c", popC);
                             res.append(NSAttributedString(string: op));
                         }else{
@@ -39,36 +38,36 @@ func getInfixString(_ infixStr:String) -> String {
                         }
                     }
                 }else{
-                    let topOP = astack.topElement() as! unichar;
-                    if isOpenC(topOP){
-                        astack.push(any: c);
+                    let topOP = operationStack.topElement() as! unichar;
+                    if isOpenSymbol(topOP){
+                        operationStack.push(any: c);
                         continue;
                     }
-                    if checkHigherPriority(o1: c, o2: topOP){
-                        astack.push(any: c);
+                    if checkHigherPriority(op1: c, op2: topOP){
+                        operationStack.push(any: c);
                     }else{
-                        while astack.isEmpty() == false{
-                            let topOP = astack.topElement() as! unichar;
-                            if isOpenC(topOP){
+                        while operationStack.isEmpty() == false{
+                            let loopTopOP = operationStack.topElement() as! unichar;
+                            if isOpenSymbol(loopTopOP){
                                 break;
                             }
-                            let popC = astack.pop() as! unichar;
-                            if !isOpenC(popC){
+                            let popC = operationStack.pop() as! unichar;
+                            if !isOpenSymbol(popC){
                                 let op = String(format: "%c", popC);
                                 res.append(NSAttributedString(string: op));
                             }else{
                                 break;
                             }
                         }
-                        astack.push(any: c);
+                        operationStack.push(any: c);
                     }
                 }
             }
         }
     }
 
-    while !astack.isEmpty() {
-        let popC = astack.pop() as! unichar;
+    while !operationStack.isEmpty() {
+        let popC = operationStack.pop() as! unichar;
         let op = String(format: "%c", popC);
         res.append(NSAttributedString(string: op));
     }
@@ -76,11 +75,11 @@ func getInfixString(_ infixStr:String) -> String {
     return res.string;
 }
 
-func isOpenC(_ c:unichar) -> Bool {
+func isOpenSymbol(_ c:unichar) -> Bool {
     return c == 40;
 }
 
-func isCloseC(_ c:unichar) -> Bool {
+func isCloseSymbol(_ c:unichar) -> Bool {
     return c == 41;
 }
 
@@ -91,29 +90,25 @@ func isOperator(_ value:unichar) -> Bool{
 }
 
 func getPrioraty(_ value:unichar)-> Int{
-//    +43   -45    *42   /47   (40   )41
-    switch(value){
-    case 43:
+    let levelLow = NSMutableString(string: "+-");
+    let levelMedium = NSMutableString(string: "*/%");
+    let levelHigh = NSMutableString(string: "()")
+    let c = String(format: "%c", value);
+    if levelLow.contains(c) {
         return 0;
-    case 45:
-        return 0;
-    case 42:
+    }else if levelMedium.contains(c){
         return 1;
-    case 47:
-        return 1;
-    case 40:
+    }else if levelHigh.contains(c){
         return 2;
-    case 41:
-        return 2;
-    default:
-        return 0;
+    }else{
+        return -1;
     }
 }
 
-func checkHigherPriority(o1:unichar, o2:unichar)-> Bool{
-    return getPrioraty(o1) >= getPrioraty(o2);
+func checkHigherPriority(op1:unichar, op2:unichar)-> Bool{
+    return getPrioraty(op1) >= getPrioraty(op2);
 }
 
-print(getInfixString("(a+b)*c+(d*e+f)*g+h"));
+print(infixStringToPostfixString("a+b*c+(d*e+f)*g"));
 
 

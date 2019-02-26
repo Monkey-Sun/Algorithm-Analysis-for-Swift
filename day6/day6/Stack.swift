@@ -22,7 +22,7 @@ class Stack: NSObject {
     }
     
     func push(any obj:Any) -> Void {
-        assert(self.maxCapcity > self.arrray.count, "stack overflow!");// assert 条件满足则报错
+        assert(self.maxCapcity > self.arrray.count, "stackoverflow!");// assert 条件满足则报错
         self.arrray.add(obj);
         self.topStack += 1;
     }
