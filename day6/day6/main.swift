@@ -15,7 +15,7 @@ import Foundation
 func infixStringToPostfixString(_ infixStr:String) -> String {
     let start = CFAbsoluteTimeGetCurrent();
     let mutableStr = NSMutableString(string: infixStr);
-    print(mutableStr.length);
+    print("字符串长度:\(mutableStr.length)");
     let operationStack = Stack();
     let res = NSMutableAttributedString();
 
@@ -74,7 +74,7 @@ func infixStringToPostfixString(_ infixStr:String) -> String {
         res.append(NSAttributedString(string: op));
     }
     let end = CFAbsoluteTimeGetCurrent();
-    print(end - start);
+    print("整个中缀转后缀算法耗时:\(end - start)秒");
     return res.string;
 }
 
