@@ -12,6 +12,7 @@
 		6E3D491322265557003C920D /* TreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D491222265557003C920D /* TreeNode.swift */; };
 		6E3D49152226857B003C920D /* BinaryTreeNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D49142226857B003C920D /* BinaryTreeNode.swift */; };
 		6E3D491722269113003C920D /* Stack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D491622269113003C920D /* Stack.swift */; };
+		6E3D49192226B005003C920D /* SearchTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3D49182226B005003C920D /* SearchTree.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		6E3D491222265557003C920D /* TreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNode.swift; sourceTree = "<group>"; };
 		6E3D49142226857B003C920D /* BinaryTreeNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinaryTreeNode.swift; sourceTree = "<group>"; };
 		6E3D491622269113003C920D /* Stack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Stack.swift; path = ../../day6/day6/Stack.swift; sourceTree = "<group>"; };
+		6E3D49182226B005003C920D /* SearchTree.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTree.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				6E3D491022263453003C920D /* ListNode.swift */,
 				6E3D491222265557003C920D /* TreeNode.swift */,
 				6E3D49142226857B003C920D /* BinaryTreeNode.swift */,
+				6E3D49182226B005003C920D /* SearchTree.swift */,
 			);
 			path = day7;
 			sourceTree = "<group>";
@@ -132,6 +135,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E3D490A2226299B003C920D /* main.swift in Sources */,
+				6E3D49192226B005003C920D /* SearchTree.swift in Sources */,
 				6E3D491722269113003C920D /* Stack.swift in Sources */,
 				6E3D491122263453003C920D /* ListNode.swift in Sources */,
 				6E3D49152226857B003C920D /* BinaryTreeNode.swift in Sources */,

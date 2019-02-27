@@ -10,6 +10,7 @@ import Cocoa
 
 class BinaryTreeNode: NSObject {
     var element:Any?;
+    var num:Int!;
     var leftNode:BinaryTreeNode?;
     var rightNode:BinaryTreeNode?;
 }
