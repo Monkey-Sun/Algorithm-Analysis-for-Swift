@@ -48,4 +48,11 @@ func creatExpressionTree(_ postFix:String) -> Void {
     print(n);
 }
 
+let st = SearchTree.insert(5, nil);
+let s1t = SearchTree.insert(4, st);
+let s2t = SearchTree.insert(6, s1t);
+
+//print(SearchTree.findMax(s2t));
+print(SearchTree.findMin(s2t));
+
 creatExpressionTree("ab+cde+**");

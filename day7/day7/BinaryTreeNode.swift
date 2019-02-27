@@ -10,7 +10,7 @@ import Cocoa
 
 class BinaryTreeNode: NSObject {
     var element:Any?;
-    var num:Int!;
+    var num:Int = -1; // -1 代表空节点
     var leftNode:BinaryTreeNode?;
     var rightNode:BinaryTreeNode?;
 }
