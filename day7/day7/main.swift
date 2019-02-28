@@ -50,9 +50,13 @@ func creatExpressionTree(_ postFix:String) -> Void {
 
 let st = SearchTree.insert(5, nil);
 let s1t = SearchTree.insert(4, st);
-let s2t = SearchTree.insert(6, s1t);
+var s2t:Optional = SearchTree.insert(6, s1t);//s2t转换成 可变可选 否则无法使用inout 关键字 inout 关键字：函数的参数可变
 
 //print(SearchTree.findMax(s2t));
-print(SearchTree.findMin(s2t));
+//print(SearchTree.findMin(s2t));
+
+SearchTree.delete(5, &s2t); //inout 关键字的使用 参数必须可变可选
+
+print(1);
 
 creatExpressionTree("ab+cde+**");
