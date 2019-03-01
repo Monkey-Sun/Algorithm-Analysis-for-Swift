@@ -82,29 +82,31 @@ class SearchTree: NSObject {
 //        }
 //    }
     
-    static func delete(_ x:Int, _ tree: inout SearchTree?) -> Void {
+    static func delete(_ x:Int, _ tree: inout SearchTree?) -> SearchTree? {
+        
         if tree == nil {
-            return;
+            return nil;
         }else{
             if x > tree!.num{ //向右查找
-                delete(x,  &tree!.rightNode);
+                tree?.rightNode = delete(x,  &tree!.rightNode);
             }else if x < tree!.num{//向左查找
-                delete(x, &tree!.leftNode);
+                tree?.leftNode = delete(x, &tree!.leftNode);
             }else{ //执行真正的删除
                 if tree!.leftNode == nil && tree!.rightNode == nil{ // 说明是叶子节点，直接删除即可
                     tree = nil;
                 }else if tree!.leftNode != nil && tree!.rightNode != nil{ //左右节点都有
                     let minNode = findMin(tree!.rightNode);
-                    minNode!.rightNode = tree!.rightNode;
-                    tree = minNode;
+                    tree?.num = (minNode?.num)!;
+                    tree?.rightNode = delete(tree!.num, &tree!.rightNode);
                 }else{
-                    if tree!.leftNode != nil{
-                        delete(x, &tree!.leftNode);
+                    if tree!.leftNode == nil{
+                        tree = tree?.rightNode;
                     }else{
-                        delete(x, &tree!.rightNode);
+                        tree = tree?.leftNode;
                     }
                 }
             }
         }
+        return tree;
     }
 }
