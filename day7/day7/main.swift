@@ -55,7 +55,7 @@ var s2t:Optional = SearchTree.insert(6, s1t);//s2t转换成 可变可选 否则�
 //print(SearchTree.findMax(s2t));
 //print(SearchTree.findMin(s2t));
 
-SearchTree.delete(6, &s2t); //inout 关键字的使用 参数必须可变可选
+SearchTree.delete(5, &s2t); //inout 关键字的使用 参数必须可变可选
 
 print(1);
 

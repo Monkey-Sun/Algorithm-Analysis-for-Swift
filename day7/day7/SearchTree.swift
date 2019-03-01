@@ -91,13 +91,13 @@ class SearchTree: NSObject {
                 tree?.rightNode = delete(x,  &tree!.rightNode);
             }else if x < tree!.num{//向左查找
                 tree?.leftNode = delete(x, &tree!.leftNode);
-            }else{ //执行真正的删除
+            }else{ //若相等 执行真正的删除
                 if tree!.leftNode == nil && tree!.rightNode == nil{ // 说明是叶子节点，直接删除即可
                     tree = nil;
-                }else if tree!.leftNode != nil && tree!.rightNode != nil{ //左右节点都有
+                }else if tree!.leftNode != nil && tree!.rightNode != nil{ //左右节点都有 规则是 用右子树最小节点顶替要删除的节点，再递归的去删除右子树中的那个最小节点。question 为啥是处理右子树？因为二叉树的定义，对于任意节点x，其左子树的所有节点j均小于x,右子树所有节点均大于x。因此z删除原节点，左子树没有满足条件的节点带顶替.
                     let minNode = findMin(tree!.rightNode);
                     tree?.num = (minNode?.num)!;
-                    tree?.rightNode = delete(tree!.num, &tree!.rightNode);
+                    tree?.rightNode = delete(minNode!.num, &tree!.rightNode);
                 }else{
                     if tree!.leftNode == nil{
                         tree = tree?.rightNode;
