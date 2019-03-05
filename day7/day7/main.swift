@@ -48,15 +48,43 @@ func creatExpressionTree(_ postFix:String) -> Void {
     print(n);
 }
 
-let st = SearchTree.insert(5, nil);
-let s1t = SearchTree.insert(4, st);
-var s2t:Optional = SearchTree.insert(6, s1t);//s2t转换成 可变可选 否则无法使用inout 关键字 inout 关键字：函数的参数可变
+//let st = SearchTree.insert(5, nil);
+//let s1t = SearchTree.insert(4, st);
+//var s2t:Optional = SearchTree.insert(6, s1t);//s2t转换成 可变可选 否则无法使用inout 关键字 inout 关键字：函数的参数可变
+//
+////print(SearchTree.findMax(s2t));
+////print(SearchTree.findMin(s2t));
+//
+//SearchTree.delete(5, &s2t); //inout 关键字的使用 参数必须可变可选
+//
+//print(1);
+//creatExpressionTree("ab+cde+**");
 
-//print(SearchTree.findMax(s2t));
-//print(SearchTree.findMin(s2t));
 
-SearchTree.delete(5, &s2t); //inout 关键字的使用 参数必须可变可选
+func test() -> SplayTree {
+    var splayT:SplayTree?;
+    for i in 0...100 { // O(n)
+       splayT = SplayTree.insert(i, splayT)
+    }
+    return splayT!;
+}
 
-print(1);
+var tree:Optional = test();
+var superNode:SplayTree?
 
-creatExpressionTree("ab+cde+**");
+let t = SplayTree.find(0, &tree);
+
+//func preOrder(_ node:SplayTree?) -> Void {
+//    if node != nil{
+//        print(node!.element!);
+//        preOrder(node!.leftNode);
+//        preOrder(node!.rightNode);
+//    }
+//}
+
+
+print(t);
+
+
+
+
