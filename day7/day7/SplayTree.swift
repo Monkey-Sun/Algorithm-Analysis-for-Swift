@@ -45,13 +45,13 @@ class SplayTree: NSObject {
             if x < tree!.element!{
                 if tree!.leftNode == nil{
                     return tree;
-                }else if x < tree!.leftNode!.element!{
+                }else if x < tree!.leftNode!.element!{ //Zig-Zig 旋转
                     tree!.leftNode!.leftNode = splayNode(x, &tree!.leftNode!.leftNode);
                     tree = singleRotateLeft(tree!);
-                }else{
+                }else{// Zig-zag 旋转
                     tree!.leftNode!.rightNode = splayNode(x, &tree!.leftNode!.rightNode);
                     if tree?.leftNode!.rightNode != nil{
-                        tree!.leftNode = singleRotateLeft(tree!.leftNode!);
+                        tree!.leftNode = singleRotateRight(tree!.leftNode!);
                     }
                 }
                 

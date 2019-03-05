@@ -63,7 +63,7 @@ func creatExpressionTree(_ postFix:String) -> Void {
 
 func test() -> SplayTree {
     var splayT:SplayTree?;
-    for i in 0...100 { // O(n)
+    for i in 1...33 { // O(n)
        splayT = SplayTree.insert(i, splayT)
     }
     return splayT!;
@@ -72,7 +72,7 @@ func test() -> SplayTree {
 var tree:Optional = test();
 var superNode:SplayTree?
 
-let t = SplayTree.find(0, &tree);
+let t = SplayTree.find(1, &tree);
 
 //func preOrder(_ node:SplayTree?) -> Void {
 //    if node != nil{
