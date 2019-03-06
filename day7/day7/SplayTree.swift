@@ -106,4 +106,9 @@ class SplayTree: NSObject {
             return max(getHeigt(tree!.leftNode), getHeigt(tree!.rightNode)) + 1;
         }
     }
+    
+    //    还有个磁盘用的B-树， 定义:对于M阶B-树，需要满足3个条件。
+    // 1. 根或叶子节点其数量是在2-M之间
+    // 2. 除根外，所有非叶子节点的儿子数量在（M/2）-M之间
+    // 3. 所有叶子节点都在同一层
 }

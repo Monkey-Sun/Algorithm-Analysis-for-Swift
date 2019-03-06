@@ -8,5 +8,20 @@
 
 import Foundation
 
-print("Hello, World!")
+//let hashT = HashTable.initialTable(10);
+//
+//print(hashT);
+
+var hashT:HashTable?;
+
+for i in 0...1000{
+    hashT = HashTable.insert(i, &hashT);
+}
+
+let node = HashTable.find(999, hashT!);
+
+
+print(hashT);
+
+
 
