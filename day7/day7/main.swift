@@ -72,7 +72,7 @@ func test() -> SplayTree {
 var tree:Optional = test();
 var superNode:SplayTree?
 
-let t = SplayTree.find(1, &tree);
+let t = SplayTree.find(30, &tree);
 
 //func preOrder(_ node:SplayTree?) -> Void {
 //    if node != nil{
@@ -83,7 +83,21 @@ let t = SplayTree.find(1, &tree);
 //}
 
 
-print(t);
+SplayTree.printTree(t);
+
+//let height = SplayTree.getHeigt(t);
+//
+//print(height);
+
+
+
+
+
+
+
+
+
+
 
 
 

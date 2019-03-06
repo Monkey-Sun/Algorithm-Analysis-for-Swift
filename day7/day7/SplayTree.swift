@@ -37,40 +37,37 @@ class SplayTree: NSObject {
         return splayNode(x, &tree);
     }
     
-    //TODO: zig-zig:一字型旋转  zig-zag:之字形旋转
-    static func splayNode(_ x:Int, _ tree:inout SplayTree?) -> SplayTree?{
-        if tree == nil{
+    static func splayNode(_ x:Int, _ tree:inout SplayTree?) -> SplayTree? {
+        if tree == nil {
             return tree;
         }else{
-            if x < tree!.element!{
+            if x < tree!.element!{//向左查找
                 if tree!.leftNode == nil{
                     return tree;
-                }else if x < tree!.leftNode!.element!{ //Zig-Zig 旋转
+                }
+                if x < tree!.leftNode!.element!{
                     tree!.leftNode!.leftNode = splayNode(x, &tree!.leftNode!.leftNode);
                     tree = singleRotateLeft(tree!);
-                }else{// Zig-zag 旋转
+                }else{
                     tree!.leftNode!.rightNode = splayNode(x, &tree!.leftNode!.rightNode);
-                    if tree?.leftNode!.rightNode != nil{
+                    if tree!.leftNode!.rightNode != nil{
                         tree!.leftNode = singleRotateRight(tree!.leftNode!);
                     }
                 }
-                
                 return tree!.leftNode == nil ? tree : singleRotateLeft(tree!);
-            }else if x > tree!.element!{
+            }else if x > tree!.element!{//向左查找
                 if tree!.rightNode == nil{
                     return tree;
                 }
-                
                 if x < tree!.rightNode!.element!{
                     tree!.rightNode!.leftNode = splayNode(x, &tree!.rightNode!.leftNode);
                     if tree!.rightNode!.leftNode != nil{
-                        tree!.rightNode = singleRotateRight(tree!.rightNode!);
+                        tree!.rightNode = singleRotateLeft(tree!.rightNode!);
                     }
                 }else{
                     tree!.rightNode!.rightNode = splayNode(x, &tree!.rightNode!.rightNode);
-                    tree = singleRotateLeft(tree!);
+                    tree = singleRotateRight(tree!);
                 }
-                
                 return tree!.rightNode == nil ? tree : singleRotateRight(tree!);
             }else{
                 return tree;
@@ -90,5 +87,23 @@ class SplayTree: NSObject {
         k2.leftNode = k1;
         k1.rightNode = k2.leftNode
         return k2;
+    }
+    
+//    树的遍历                                            // 根-左-右  先序
+    static func printTree(_ tree:SplayTree?) -> Void {  // 左-根-左  中序
+                                                        // 左-右-根  先序
+        if tree != nil {//对一颗查找树  进行中序遍历打印 打印出来的就是排好序的
+            printTree(tree?.leftNode);
+            print("\(tree!.element ?? -1)");
+            printTree(tree?.rightNode);
+        }
+    }
+    
+    static func getHeigt(_ tree:SplayTree?) ->Int{
+        if tree == nil {
+            return -1;
+        }else{
+            return max(getHeigt(tree!.leftNode), getHeigt(tree!.rightNode)) + 1;
+        }
     }
 }
