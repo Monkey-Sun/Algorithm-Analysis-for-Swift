@@ -25,13 +25,13 @@ let node = HashTable.find(999, hashT!);
 
 var aHash : ArrayHashTable?;
 
-let data = [89, 18, 49, 58, 69];
+let data = [89, 18, 49, 58, 69, 100, 1000];
 
 for i in 0...(data.count - 1){
     aHash = ArrayHashTable.insert(data[i], &aHash);
 }
 
-print(aHash);
+print(ArrayHashTable.find(1000, aHash));
 
 
 
