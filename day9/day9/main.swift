@@ -9,10 +9,14 @@
 import Foundation
 
 
-let PQ = PriorityQueue(100);
+var PQ:Optional = PriorityQueue(100, -1);
 
-for i in (0..<100).reversed(){
-    PQ.insert(i);
+for i in (0...100).reversed(){
+    PQ!.insert(i);
 }
 
-print(PQ);
+//print(PQ);
+
+for _ in 0...100{
+    print(PriorityQueue.deleteMin(&PQ!));
+}

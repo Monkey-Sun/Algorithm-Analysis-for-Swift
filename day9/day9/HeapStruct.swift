@@ -29,16 +29,16 @@ class PriorityQueue: NSObject {
     var capcity :Int!;
     var elements:Array<Int>!;
     var size = 0;
-//    var sentinel:Int; //标记
     
     
-    init(_ maxElements:Int) {
+    init(_ maxElements:Int, _ sentinel:Int) {
         super.init();
         assert(maxElements >= self.minElements, "maxElements must greater than \(self.minElements)");
         self.capcity = maxElements;
-        self.elements = Array(repeating: -1, count: maxElements + 1);
+        self.elements = Array(repeating: sentinel, count: maxElements + 1);
     }
     
+    // 入队列
     func insert(_ num:Int) -> Void {
         if isFull {
             print("队列满了");
@@ -55,5 +55,36 @@ class PriorityQueue: NSObject {
     
     var isFull: Bool{
         return size >= self.capcity;
+    }
+    
+    var isEmpty:Bool{
+        return size == 0;
+    }
+    
+//    相当于出队列 是O(logN)
+    static func deleteMin(_ priorityQueue:inout PriorityQueue) -> Int {
+        if priorityQueue.isEmpty {
+            return priorityQueue.elements[0];
+        }
+        let minData = priorityQueue.elements[1];
+        let lastData = priorityQueue.elements[priorityQueue.size];
+        priorityQueue.size -= 1;
+        var i = 1;
+        var child : Int;
+        while i * 2 <= priorityQueue.size {
+            child = i * 2;// 左儿子
+            if child != priorityQueue.size && priorityQueue.elements[child + 1] < priorityQueue.elements[child]{
+                child += 1;
+            }
+            
+            if lastData > priorityQueue.elements[child]{
+                priorityQueue.elements[i] = priorityQueue.elements[child];
+                i = child;
+            }else{
+                break;
+            }
+        }
+        priorityQueue.elements[i] = lastData;
+        return minData;
     }
 }
