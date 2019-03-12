@@ -87,4 +87,49 @@ class PriorityQueue: NSObject {
         priorityQueue.elements[i] = lastData;
         return minData;
     }
+    
+    
+    func insertWithoutSort(_ num:Int) -> Void {
+        if isFull {
+            print("队列满了");
+            return;
+        }
+        size += 1;
+        elements[size] = num;
+    }
+    
+//    乱序插入元素，最后排序
+    func sort() -> Void {
+        var i = (size - 1) / 2 + 1;
+        while  i > 0{
+            percolateDown(i);
+            i -= 1;
+        }
+    }
+    
+    func percolateDown(_ index:Int) -> Void {
+        if 2 * index > size {
+            return;
+        }
+        let leftNode = elements[2 * index];
+        var smallIndex : Int;
+        var smallNode : Int;
+        
+        if 2 * index + 1 > size {
+            smallIndex = 2 * index;
+            smallNode = elements[2 * index];
+        }else{
+            let rightNode = elements[2 * index + 1];
+            smallIndex = leftNode < rightNode ? 2 * index : 2 * index + 1;
+            smallNode = elements[smallIndex];
+        }
+        
+        if smallNode > elements[index] {
+            return;
+        }else{
+            elements[smallIndex] = elements[index];
+            elements[index] = smallNode;
+            percolateDown(smallIndex);
+        }
+    }
 }

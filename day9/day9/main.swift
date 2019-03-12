@@ -11,12 +11,12 @@ import Foundation
 
 var PQ:Optional = PriorityQueue(100, -1);
 
-for i in (0...100).reversed(){
-    PQ!.insert(i);
+for i in (0..<100).reversed(){
+    PQ!.insertWithoutSort(i);
 }
 
-//print(PQ);
+PQ!.sort();
 
-for _ in 0...100{
+for _ in 0..<100{
     print(PriorityQueue.deleteMin(&PQ!));
 }
