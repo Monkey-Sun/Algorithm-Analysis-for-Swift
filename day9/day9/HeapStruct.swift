@@ -25,7 +25,12 @@ class HeapStruct: NSObject {
 
 protocol ElementProtocol {
     var key:Int{get};
-//    var value:Any{set get};
+}
+
+fileprivate class QueueObj: NSObject, ElementProtocol {
+    var key: Int{
+        return -1;
+    }
 }
 
 class PriorityQueue: NSObject {
@@ -39,7 +44,7 @@ class PriorityQueue: NSObject {
         super.init();
         assert(maxElements >= self.minElements, "maxElements must greater than \(self.minElements)");
         self.capcity = maxElements;
-        self.elements = Array(repeating: NSObject(), count: maxElements + 1) as? Array<ElementProtocol>;
+        self.elements = Array(repeating: QueueObj(), count: maxElements + 1);
     }
     
     // 入队列

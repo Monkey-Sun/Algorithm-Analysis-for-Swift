@@ -13,6 +13,7 @@
 		6EFF19D0223CC4A000AF885F /* RandomManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF19CF223CC4A000AF885F /* RandomManager.swift */; };
 		6EFF19D2223CD7D200AF885F /* ServiceWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF19D1223CD7D200AF885F /* ServiceWindow.swift */; };
 		6EFF19D4223CDB4E00AF885F /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF19D3223CDB4E00AF885F /* Event.swift */; };
+		6EFF19D6223D096200AF885F /* NumberKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFF19D5223D096200AF885F /* NumberKey.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +36,7 @@
 		6EFF19CF223CC4A000AF885F /* RandomManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomManager.swift; sourceTree = "<group>"; };
 		6EFF19D1223CD7D200AF885F /* ServiceWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceWindow.swift; sourceTree = "<group>"; };
 		6EFF19D3223CDB4E00AF885F /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6EFF19D5223D096200AF885F /* NumberKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberKey.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				6EFF19D3223CDB4E00AF885F /* Event.swift */,
 				6EFF19D1223CD7D200AF885F /* ServiceWindow.swift */,
 				6EFF19CF223CC4A000AF885F /* RandomManager.swift */,
+				6EFF19D5223D096200AF885F /* NumberKey.swift */,
 			);
 			path = day9;
 			sourceTree = "<group>";
@@ -135,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6EFF19CE223CB22C00AF885F /* Customer.swift in Sources */,
+				6EFF19D6223D096200AF885F /* NumberKey.swift in Sources */,
 				6E27084E22363B1F00B8DD89 /* HeapStruct.swift in Sources */,
 				6EFF19D2223CD7D200AF885F /* ServiceWindow.swift in Sources */,
 				6EFF19D0223CC4A000AF885F /* RandomManager.swift in Sources */,

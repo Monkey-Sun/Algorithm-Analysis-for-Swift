@@ -11,6 +11,7 @@ import Cocoa
 class Customer: NSObject, ElementProtocol{
     var status = -1; //0 等待; 1 离开
     var arrive_time = 0;
+    var duration = 0;
     
     var key: Int{
         return arrive_time;
@@ -19,5 +20,6 @@ class Customer: NSObject, ElementProtocol{
     init(_ arrivet:Int) {
         super.init();
         arrive_time = arrivet;
+        duration = RandomManager.customer_seviceTime();
     }
 }
