@@ -23,34 +23,38 @@ class HeapStruct: NSObject {
     }
 }
 
+protocol ElementProtocol {
+    var key:Int{get};
+//    var value:Any{set get};
+}
 
 class PriorityQueue: NSObject {
     let minElements = 10;
     var capcity :Int!;
-    var elements:Array<Int>!;
+    var elements:Array<ElementProtocol>!;
     var size = 0;
     
     
-    init(_ maxElements:Int, _ sentinel:Int) {
+    init(_ maxElements:Int) {
         super.init();
         assert(maxElements >= self.minElements, "maxElements must greater than \(self.minElements)");
         self.capcity = maxElements;
-        self.elements = Array(repeating: sentinel, count: maxElements + 1);
+        self.elements = Array(repeating: NSObject(), count: maxElements + 1) as? Array<ElementProtocol>;
     }
     
     // 入队列
-    func insert(_ num:Int) -> Void {
+    func enqueue(_ obj:ElementProtocol) -> Void {
         if isFull {
             print("队列满了");
             return;
         }
         size = size + 1;
         var i:Int = size;
-        while self.elements[i / 2] > num {
+        while self.elements[i / 2].key > obj.key {
             self.elements[i] = self.elements[ i / 2];
             i /= 2;
         }
-        self.elements[i] = num;
+        self.elements[i] = obj;
     }
     
     var isFull: Bool{
@@ -61,8 +65,16 @@ class PriorityQueue: NSObject {
         return size == 0;
     }
     
+    var front : ElementProtocol{
+        return elements[1];
+    }
+    
+    var tail : ElementProtocol{
+        return elements[size - 1];
+    }
+    
 //    相当于出队列 是O(logN)
-    static func deleteMin(_ priorityQueue:inout PriorityQueue) -> Int {
+    static func dequeue(_ priorityQueue:inout PriorityQueue) -> ElementProtocol {
         if priorityQueue.isEmpty {
             return priorityQueue.elements[0];
         }
@@ -73,11 +85,11 @@ class PriorityQueue: NSObject {
         var child : Int;
         while i * 2 <= priorityQueue.size {
             child = i * 2;// 左儿子
-            if child != priorityQueue.size && priorityQueue.elements[child + 1] < priorityQueue.elements[child]{
+            if child != priorityQueue.size && priorityQueue.elements[child + 1].key < priorityQueue.elements[child].key{
                 child += 1;
             }
             
-            if lastData > priorityQueue.elements[child]{
+            if lastData.key > priorityQueue.elements[child].key{
                 priorityQueue.elements[i] = priorityQueue.elements[child];
                 i = child;
             }else{
@@ -89,42 +101,42 @@ class PriorityQueue: NSObject {
     }
     
     
-    func insertWithoutSort(_ num:Int) -> Void {
+    func insertWithoutSort(_ obj:ElementProtocol) -> Void {
         if isFull {
             print("队列满了");
             return;
         }
         size += 1;
-        elements[size] = num;
+        elements[size] = obj;
     }
     
 //    乱序插入元素，最后排序
-    func sort() -> Void {
+    func heapSort() -> Void {
         var i = (size - 1) / 2 + 1;
         while  i > 0{
             percolateDown(i);
             i -= 1;
         }
     }
-    
+//    percolateDown 执行效率，取决于虚线的条数N. 对于高度为h的理想二叉树，虚线条数的和为 2^(h + 1) -1 - （h + 1）
     func percolateDown(_ index:Int) -> Void {
         if 2 * index > size {
             return;
         }
         let leftNode = elements[2 * index];
         var smallIndex : Int;
-        var smallNode : Int;
+        var smallNode : ElementProtocol;
         
         if 2 * index + 1 > size {
             smallIndex = 2 * index;
             smallNode = elements[2 * index];
         }else{
             let rightNode = elements[2 * index + 1];
-            smallIndex = leftNode < rightNode ? 2 * index : 2 * index + 1;
+            smallIndex = leftNode.key < rightNode.key ? 2 * index : 2 * index + 1;
             smallNode = elements[smallIndex];
         }
         
-        if smallNode > elements[index] {
+        if smallNode.key > elements[index].key {
             return;
         }else{
             elements[smallIndex] = elements[index];
