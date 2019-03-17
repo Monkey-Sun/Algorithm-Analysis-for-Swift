@@ -8,10 +8,6 @@
 
 import Cocoa
 
-protocol ElementProtocol {
-    var key:Int{get};
-}
-
 fileprivate class QueueObj: NSObject, ElementProtocol {
     var key: Int{
         return -1;
