@@ -11,7 +11,8 @@ import Foundation
 
 var array:Optional = [1,7,6,6, 5, 4, 3, 2, 1];
 //Insertion.sort(&array!);
-Bubble.sort(&array!);
+//Bubble.sort(&array!);
+Shell.sort(&array!);
 
 print(array!);
 
