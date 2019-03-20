@@ -9,5 +9,7 @@
 import Cocoa
 
 class Quick: NSObject {
-
+    func sort(_ array:[Int]) -> Void {
+        
+    }
 }
