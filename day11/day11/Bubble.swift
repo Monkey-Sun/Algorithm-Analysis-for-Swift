@@ -12,7 +12,7 @@ class Bubble: NSObject {
     
     static func sort(_ array:inout [Int]) -> Void {
         for i in 0..<array.count {// 比较n次
-            for j in 0..<(array.count - i - 1){
+            for j in 0..<(array.count - 1 - i){
                 if(array[j] > array[j + 1]){ // 外层循环i次 说明有i个数字定序，内层减去这个定序则可以减少比较次数
                     let temp = array[j];
                     array[j] = array[j + 1];

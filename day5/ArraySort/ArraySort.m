@@ -17,7 +17,7 @@
     int count = sizeof(array)/sizeof(int);
     
     for (int t = 0; t < count - 1; t++) {
-        for (int i = count - 1 ; i > 0; i--) {
+        for (int i = count - t - 1; i > 0; i--) {
             if (array[i] < array[i-1]) {
                 int temp = array[i];
                 array[i] = array[i-1];

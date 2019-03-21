@@ -12,7 +12,8 @@ import Foundation
 var array:Optional = [81,94,11,96, 12, 35, 17, 95, 28, 58, 41, 75, 15];
 //Insertion.sort(&array!);
 //Bubble.sort(&array!);
-Shell.sort(&array!);
+//Shell.sort(&array!);
+Quick.sort(&array!);
 print(array!);
 
 
