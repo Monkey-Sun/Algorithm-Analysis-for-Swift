@@ -14,7 +14,8 @@ var array:Optional = [81,94,11,96, 12, 35, 17, 95, 28, 58, 41, 75, 15];
 //Bubble.sort(&array!);
 //Shell.sort(&array!);
 //Quick.sort(&array!);
-Heap.sort(&array!);
+//Heap.sort(&array!);
+Merge.sort(&array!);
 print(array!);
 
 
