@@ -6,7 +6,7 @@
 //  Copyright © 2019 XLang. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 // 使用最大堆来实现堆排序。
 class Heap: NSObject {
     static func sort(_ array:inout [Int]) -> Void {

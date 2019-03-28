@@ -6,7 +6,7 @@
 //  Copyright © 2019 XLang. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 // 思路:假设第一个已定序，从位置p=1开始，依次取新的元素，和前面定序的元素依次比较，直到找到正确的位置。
 class Insertion: NSObject {

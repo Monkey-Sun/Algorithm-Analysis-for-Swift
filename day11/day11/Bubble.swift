@@ -6,7 +6,7 @@
 //  Copyright © 2019 XLang. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 
 class Bubble: NSObject {
     

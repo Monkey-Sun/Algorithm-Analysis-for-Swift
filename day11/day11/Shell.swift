@@ -6,7 +6,7 @@
 //  Copyright © 2019 XLang. All rights reserved.
 //
 
-import Cocoa
+import Foundation
 // 希尔排序的核心思路是，局部有序到整体有序，希尔排序的时间复杂度为O(n^(3/2)) < O(n^2)
 class Shell: NSObject {
     static func sort(_ array:inout [Int]) -> Void {
